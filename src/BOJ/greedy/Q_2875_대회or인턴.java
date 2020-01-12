@@ -25,7 +25,6 @@ public class Q_2875_대회or인턴 {
             if(k <= (n + m)-(2*i + i)) cnt++;
             else break;
         }
-
         System.out.println(cnt);
     }
 
