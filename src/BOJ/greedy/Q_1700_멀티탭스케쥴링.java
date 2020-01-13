@@ -45,7 +45,7 @@ public class Q_1700_멀티탭스케쥴링 {
 
             if(isUse) continue;
 
-/*         isUse = false;
+         isUse = false;
          for(int j = 0; j < n; j++)
             if(multi[j] == 0){
                // 비어 있는 구멍을 발견하면 거기에 꽂음
@@ -54,9 +54,8 @@ public class Q_1700_멀티탭스케쥴링 {
                break;
             }
          // 비어 있는 구멍이 있다면 아무것도 뽑을 필요 없음
-         if(isUse) continue;*/
+         if(isUse) continue;
 
-            // 가장 나중에 다시 사용될 전기용품을 찾음
             int swap = -1, val = -1;
             for(int j = 0; j < n; j++){
                 int term = 0;
@@ -66,9 +65,7 @@ public class Q_1700_멀티탭스케쥴링 {
                     val = term;
                 }
             }
-            // 플러그를 뽑는 횟수 1 증가
             result++;
-            // 해당 구멍에 꽂혀 있는 전기용품이 바뀜
             multi[swap] = arr[i];
         }
 
