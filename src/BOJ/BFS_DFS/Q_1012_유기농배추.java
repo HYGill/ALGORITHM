@@ -31,11 +31,13 @@ public class Q_1012_유기농배추 {
                 // x가 가로고 y가 세로로 저장되어야한다.
                 cabbage[Integer.parseInt(str[1])][Integer.parseInt(str[0])] = 1;
             }
+
             for (int j = 0; j < N; j++) {
                 for (int k = 0; k < M; k++) {
                     // 1이면 4방향 모두 검사해서 0으로 갱신시킨다.
-                    if (cabbage[i][j] != 1) {
-                        DFS(i, j);
+                    if (cabbage[j][k] == 1) {
+                        DFS(j, k);
+                        cabbage[j][k] = 0;
                         count++;
                     }
                 }
@@ -44,21 +46,22 @@ public class Q_1012_유기농배추 {
         }
     }
 
-    static void DFS(int x, int y){
+    static void DFS(int y, int x){
+        //방문한 곳은 0으로 바꿔줌
+        cabbage[y][x] = 0;
         for (int i = 0; i < 4; i++) {
             int dx = x + goX[i];
             int dy = y + goY[i];
 
-            if (dx < 0 || dy < 0 || dx >= N || dy >= M) {
+            if (dx < 0 || dy < 0 || dx >= M || dy >= N) {
                 continue;
             }
             //다음 방문할 값이 0 이라면 그냥 통과, 1이 나오면 다 없애야하기때문에
-            if (cabbage[dx][dy] == 0) {
+            if (cabbage[dy][dx] == 0) {
                 continue;
             }
-            //방문한 곳은 0으로 바꿔줌
-            cabbage[dx][dy] = 0;
-            DFS(dx, dy);
+
+            DFS(dy, dx);
         }
     }
 }
