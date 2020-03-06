@@ -11,12 +11,12 @@ public class Q_베스트앨범 {
         solution(genres, plays);
     }
 
-    static public void solution(String[] genres, int[] plays) {
+    static public int[] solution(String[] genres, int[] plays) {
         List<Integer> result = new ArrayList<>();
         // 장르 정렬
         HashMap<String, Integer> genresHash = new HashMap<>();
         for(int i = 0; i < genres.length; i++) {
-            genresHash.put(genres[i], genresHash.getOrDefault(genres[i], plays[i]) + plays[i]);
+            genresHash.put(genres[i], genresHash.getOrDefault(genres[i], 0) + plays[i]);
         }
         List<String> sortGenres = sortByValue(genresHash);
 
@@ -26,11 +26,13 @@ public class Q_베스트앨범 {
             playsHash.put(i, plays[i]);
         }
         List<Integer> sortPlays = sortByValueInt(playsHash);
-        for (int i = 0; i < sortGenres.size(); i++){
+
+        // 구하기
+        for (int j = 0; j < sortGenres.size(); j++){
             int cnt = 0;
-            for(int n : sortPlays){
-                if(genres[n].equals(sortGenres.get(i))){
-                    result.add(n);
+            for(int i : sortPlays){
+                if(genres[i].equals(sortGenres.get(j))){
+                    result.add(i);
                     cnt++;
                     if(cnt > 1) break;
                 }
@@ -40,8 +42,9 @@ public class Q_베스트앨범 {
         int[] answer = new int[result.size()];
         for(int i = 0; i < result.size(); i++){
             answer[i] = result.get(i);
-            System.out.println(answer[i]);
         }
+
+        return answer;
     }
 
     public static List<String> sortByValue(HashMap<String, Integer> map){
@@ -50,13 +53,12 @@ public class Q_베스트앨범 {
 
         Collections.sort(list, new Comparator<Object>(){
             public int compare(Object o1,Object o2){
-                Object v1 = map.get(o1);
-                Object v2 = map.get(o2);
+                int v1 = map.get(o1);
+                int v2 = map.get(o2);
 
-                return ((Comparable<Object>) v1).compareTo(v2);
+                return v2-v1;
             }
         });
-        Collections.reverse(list);
         return list;
     }
 
@@ -64,15 +66,18 @@ public class Q_베스트앨범 {
         List<Integer> list = new ArrayList<Integer>();
         list.addAll(map.keySet());
 
-        Collections.sort(list, new Comparator<Object>(){
-            public int compare(Object o1,Object o2){
-                Object v1 = map.get(o1);
-                Object v2 = map.get(o2);
+        Collections.sort(list, new Comparator<Integer>(){
+            public int compare(Integer o1,Integer o2) {
+                int v1 = map.get(o1);
+                int v2 = map.get(o2);
 
-                return ((Comparable<Object>) v1).compareTo(v2);
+                if (v1 == v2) {
+                    return o1 - o2;
+                } else {
+                    return v2 - v1;
+                }
             }
         });
-        Collections.reverse(list);
         return list;
     }
 }
