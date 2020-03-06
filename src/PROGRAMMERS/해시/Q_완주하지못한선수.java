@@ -1,8 +1,8 @@
 package PROGRAMMERS.해시;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class Q_완주하지못한선수 {
     static String answer = "";
@@ -18,26 +18,19 @@ public class Q_완주하지못한선수 {
     }
 
     static public String solution(String[] participant, String[] completion) {
-        HashSet hashSet = new HashSet(Arrays.asList(completion));
-        HashSet isSameName = new HashSet(Arrays.asList(participant));
-        int hashSize = hashSet.size();
+        Map<String, Integer> participantMap = new HashMap<>();
+        for (int i = 0; i < participant.length; i++) {
+            participantMap.put(participant[i], participantMap.getOrDefault(participant[i], 0)+1);
+        }
 
-        if(isSameName.size() == participant.length){
-            for(String s : participant){
-                hashSet.add(s);
-                if(hashSize != hashSet.size()){
-                    answer = s;
-                    break;
-                }
-            }
-        }else{
-            ArrayList<String> tmp = new ArrayList<>(Arrays.asList(participant));
-            for(String s : completion){
-                if(tmp.contains(s)){
-                    tmp.remove(s);
-                }
-            }
-            answer = tmp.get(0);
+        for (int i = 0; i < completion.length; i++) {
+            participantMap.put(completion[i], participantMap.getOrDefault(completion[i], 0)-1);
+        }
+
+        Set<String> keySet = participantMap.keySet();
+        for(String key : keySet) {
+            if(participantMap.get(key) != 0)
+                answer = key;
         }
 
         return answer;
