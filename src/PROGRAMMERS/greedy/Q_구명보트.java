@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class Q_구명보트 {
     static int answer = 0;
     public static void main(String[] args) {
-        int[] people = {70, 80, 50};
+        int[] people = {70, 60, 80};
         int limit = 100;
 
         solution(people, limit);
@@ -21,16 +21,19 @@ public class Q_구명보트 {
             arrNum.add(people[i]);
         }
 
-        int n = 0;
         while (arrNum.size() > 0){
-            if(people[n] + people[arrNum.size()-1] > limit){
+            if((arrNum.size() - 1) == 0){
                 answer++;
-                arrNum.remove(arrNum.size()-1);
+                return answer;
+            }
+            if(arrNum.get(0) + arrNum.get(arrNum.size() - 1) > limit){
+                answer++;
+                arrNum.remove(arrNum.size() - 1);
             }else{
                 answer++;
-                arrNum.remove(n);
+                arrNum.remove(0);
                 if(arrNum.size() > 0)
-                    arrNum.remove(arrNum.size()-1);
+                    arrNum.remove(arrNum.size() - 1);
             }
         }
 
