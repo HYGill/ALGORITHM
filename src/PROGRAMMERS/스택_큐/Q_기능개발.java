@@ -7,21 +7,21 @@ import java.util.Queue;
 
 public class Q_기능개발 {
     public static void main(String[] args) {
-        //int [] progresses = {93,30,55};
-        //int [] progresses = {93,30,55,60};
-        int [] progresses = {93, 30, 55, 60, 40, 60, 65};
+//        int [] progresses = {93,30,55};
+       int [] progresses = {93,30,55,60};
+        //int [] progresses = {93, 30, 55, 60, 40, 60, 65};
         //int [] progresses = {40, 93, 30, 55, 60, 65};
-        //int[] speeds = {1,30,5}; //[2,1]
-        //int[] speeds = {1,30,5,40}; //[2,2]
-        int[] speeds = {1, 30, 5 , 10, 60, 10, 7};//[2,5]
+//        int[] speeds = {1,30,5}; //[2,1]
+        int[] speeds = {1,30,5,40}; //[2,2]
+        //int[] speeds = {1, 30, 5 , 10, 60, 10, 7};//[2,5]
         //int[] speeds = {60, 1, 30, 5 , 10, 7};//[1,2,3]
 
         System.out.println(solution(progresses, speeds));
     }
 
     public static int[] solution(int[] progresses, int[] speeds) {
-        List<Integer> tmp = new ArrayList<>();
         List<Integer> result = new ArrayList<>();
+        Queue<Integer> queue = new LinkedList<>();
 
         Queue<work> works = new LinkedList<>();
         for (int i = 0; i < progresses.length; i++) {
@@ -36,47 +36,34 @@ public class Q_기능개발 {
                 cnt++;
 
                 if(nowProgress >= 100){
-                    tmp.add(cnt);
+                    queue.offer(cnt);
                     works.poll();
                 }
             }
         }
 
-        int index = 0;
-        do{
-            int cnt = 1;
-            int tmpVal = index+1 >= tmp.size() ? 10 : tmp.get(index+1);
-            if(tmp.get(index) < tmpVal){
-                result.add(cnt);
-                index++;
+        int max = queue.poll();
+        int day = 1;
+        while (true){
+            if(max < queue.peek()){
+                max = queue.poll();
+                result.add(day);
+                day = 1;
             }else {
-                for (int j = index+2; j < tmp.size(); j++) {
-                    cnt++;
-                    if(tmp.get(index) < tmp.get(j)) {
-                        result.add(cnt);
-                        index = j;
-                        break;
-                    }else{
-                        if(j == tmp.size()-1) {
-                            cnt++;
-                            index = j+1;
-                            result.add(cnt);
-                            break;
-                        }
-                        else{
-                            index = j+1;
-                            continue;
-                        }
-                    }
-                }
+                day++;
+                queue.poll();
+            }
+
+            if(queue.isEmpty()){
+                result.add(day);
+                break;
             }
         }
-        while (index < tmp.size());
 
         int[] answer = new int[result.size()];
         for (int i = 0; i < result.size(); i++) {
             answer[i] = result.get(i);
-            System.out.println(answer[i]);
+            System.out.print(answer[i]);
         }
 
         return answer;
