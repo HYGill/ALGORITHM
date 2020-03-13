@@ -30,8 +30,6 @@ public class Q_쇠막대기 {
             }else if(laser[i]==')' && tmp == ')' && nowLaser.size() >= 1){
                 answer += 1;
                 nowLaser.pop();
-            }else{
-                nowLaser.pop();
             }
         }
         return answer;
