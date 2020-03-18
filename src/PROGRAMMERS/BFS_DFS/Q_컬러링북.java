@@ -37,8 +37,8 @@ public class Q_컬러링북 {
         return answer;
     }
 
-    static int[] goX = {-1, 0, 1, 0};
-    static int[] goY = {0, 1, 0, -1};
+    static int[] goX = {0, 1, 0, -1}; // 우 좌
+    static int[] goY = {1, 0, -1, 0}; // 하 상
     private static void DFS(int m, int n, int[][] picture, boolean[][] visited, int x, int y, int now) {
         for(int i = 0; i < 4; i++){
             int dx = x + goX[i];
