@@ -47,7 +47,6 @@ public class 종이접기 {
         int[] answer = new int[result.size()];
         for (int i = 0; i < result.size(); i++) {
             answer[i] = result.get(i);
-            System.out.print(answer[i]);
         }
 
         return answer;
