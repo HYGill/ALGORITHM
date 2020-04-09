@@ -45,21 +45,11 @@ public class Q_1700_멀티탭스케쥴링 {
 
             if(isUse) continue;
 
-         isUse = false;
-         for(int j = 0; j < n; j++)
-            if(multi[j] == 0){
-               // 비어 있는 구멍을 발견하면 거기에 꽂음
-               multi[j] = arr[i];
-               isUse = true;
-               break;
-            }
-         // 비어 있는 구멍이 있다면 아무것도 뽑을 필요 없음
-         if(isUse) continue;
-
             int swap = -1, val = -1;
             for(int j = 0; j < n; j++){
                 int term = 0;
-                for(int k = i + 1; k < m && multi[j] != arr[k]; k++) term++;
+                for(int k = i + 1; k < m && multi[j] != arr[k]; k++)
+                    term++;
                 if(term > val){
                     swap = j;
                     val = term;
