@@ -36,7 +36,7 @@ public class Q_1197_최소스패닝트리 {
             int rootX = findRoot(cur.x);
             int rootY = findRoot(cur.y);
 
-            if(rootX != rootY) { //union-find 중 union 함수 , 연결되지 않은 그룹을 연결시켜준다.
+            if(rootX != rootY) { //union-find 중 union 함수, 연결되지 않은 그룹을 연결시켜준다.
                 int x = findRoot(rootX);
                 int y = findRoot(rootY);
 
@@ -49,10 +49,10 @@ public class Q_1197_최소스패닝트리 {
     }
 
     static public int findRoot(int v) {
-        if (v == parent[v])  //v node의 값(==parent[v])이 v 랑 같다면 v는 root node
+        if (v == parent[v])  //v node 의 값(==parent[v])이 v 랑 같다면 v는 root node
             return v;
         else {
-            //v의 parent node를 찾기 위해 parameter로 parent[v]를 넘겨줌
+            //v의 parent node 를 찾기 위해 parameter 로 parent[v]를 넘겨줌
             parent[v] = findRoot(parent[v]);
             return parent[v];
         }
