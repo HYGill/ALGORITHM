@@ -18,7 +18,7 @@ public class N으로표현 {
         if(N == number)
             return 1;
 
-        for (int i = 1; i < 8; i++) {
+        for (int i = 1; i < 9; i++) {
             StringBuilder tmp = new StringBuilder();
             for (int j = 0; j < i; j++) {
                 tmp.append(N);
