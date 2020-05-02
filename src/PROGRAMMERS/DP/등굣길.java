@@ -15,20 +15,20 @@ public class 등굣길 {
         street[1][0] = 1;
 
         for (int i = 0; i < puddles.length; i++) {
-            street[puddles[i][1]][puddles[i][0]] = -1;
+            street[puddles[i][1]][puddles[i][0]] = 0;
         }
         for (int i = 1; i < street.length; i++) {
             for (int j = 1; j < street[i].length; j++) {
                 if(street[i][j] != -1 && street[i-1][j] != -1 && street[i][j-1] != -1)
-                    street[i][j] = (street[i-1][j] + street[i][j-1]);
+                    street[i][j] = (street[i-1][j] + street[i][j-1]) % 1000000007;
                 else if (street[i][j-1] == -1 && street[i][j] != -1)
-                    street[i][j] = street[i-1][j];
+                    street[i][j] = street[i-1][j] % 1000000007;
                 else if(street[i-1][j] == -1 && street[i][j] != -1)
-                    street[i][j] = street[i][j-1];
+                    street[i][j] = street[i][j-1] % 1000000007;
             }
         }
 
-        answer = street[n][m] % 1000000007;
+        answer = street[n][m];
 
         return answer;
     }
