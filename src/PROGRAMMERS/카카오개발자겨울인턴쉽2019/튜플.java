@@ -1,8 +1,8 @@
 package PROGRAMMERS.카카오개발자겨울인턴쉽2019;
 
-import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class 튜플 {
     public static void main(String[] args) {
@@ -12,7 +12,7 @@ public class 튜플 {
 
     public static int[] solution(String s) {
         LinkedHashSet<Integer> set = new LinkedHashSet();
-        Map<Integer, String> map = new HashMap<>();
+        Map<Integer, String> map = new TreeMap<>();
         int repeat = 1;
 
         // 괄호안에 숫자가 적은 숫자대로 map에 넣었다. 왜냐하면 적게 들어간 것 부터 답을 넣어야하기 때문
