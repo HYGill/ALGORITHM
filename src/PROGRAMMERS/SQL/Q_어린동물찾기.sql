@@ -1,0 +1,4 @@
+/*
+ * 같지 않다의 조건 연산자는 !=와 <>가 같다 
+*/
+SELECT ANIMAL_ID, NAME FROM ANIMAL_INS WHERE INTAKE_CONDITION != 'Aged' ORDER BY ANIMAL_ID;
