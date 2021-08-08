@@ -1,0 +1,4 @@
+/*
+* mssql 의 top 1, mysql limit 1
+*/
+SELECT NAME FROM ANIMAL_INS ORDER BY DATETIME LIMIT 1;
