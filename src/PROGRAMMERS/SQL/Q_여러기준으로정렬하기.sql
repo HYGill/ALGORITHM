@@ -1,0 +1,4 @@
+/*
+* 뒤에 정렬 규칙 하나하면 같으면(예외상황일시) 뒤에꺼 처리
+*/
+SELECT ANIMAL_ID, NAME, DATETIME FROM ANIMAL_INS ORDER BY NAME, DATETIME DESC;
