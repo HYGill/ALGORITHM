@@ -1,0 +1,4 @@
+/*
+* WHERE는 그룹화 하기 전, HAVING은 그룹화 후에 조건
+*/
+SELECT NAME, count(NAME) as COUNT FROM ANIMAL_INS GROUP BY NAME HAVING COUNT >= 2;
