@@ -5,7 +5,7 @@ public class 부족한금액계산하기 {
         int price = 3;
         int money = 20;
         int count = 4;
- 
+  
         long answer = 0;
 
         System.out.println(answer); 
