@@ -7,7 +7,7 @@ public class 부족한금액계산하기 {
         int count = 4;
 
         long answer = 0;
-
+ 
         System.out.println(answer); 
     }
 }
