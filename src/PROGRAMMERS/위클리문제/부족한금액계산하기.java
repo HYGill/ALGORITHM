@@ -7,6 +7,13 @@ public class 부족한금액계산하기 {
         int count = 4;
         long answer = 0;
 
+        long result = 0;
+        for(int i = 1; i <= count; i++){
+            result += (price * i);
+        }
+
+        answer = result - money;
+
         System.out.println(answer); 
     }
 }
