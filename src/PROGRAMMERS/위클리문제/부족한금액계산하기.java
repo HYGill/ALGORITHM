@@ -8,6 +8,6 @@ public class 부족한금액계산하기 {
  
         long answer = 0;
 
-        System.out.println(answer);
+        System.out.println(answer); 
     }
 }
