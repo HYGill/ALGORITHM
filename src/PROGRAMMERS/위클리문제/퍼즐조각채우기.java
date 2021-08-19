@@ -12,6 +12,12 @@ public class 퍼즐조각채우기 {
         int answer = -1;
 
         boolean[][] visited = new boolean[game_board.length][game_board.length];
+
+        // table의 조각을 모두 조사. Map 형식으로 key는 칸의 갯수 뒤에는 list<list>로 저장
+
+        // game_board의 빈칸을 조사
+        // if 빈칸이 끝났을 때 빈칸 숫자를 세고 table map 에서 list들 가져옴
+        // 가져온 list들 90도씩 회전 시키면서 똑같은거 있는지 확인
         for(int i = 0; i < game_board.length; i++){
             for(int j = 0; j < game_board[i].length; j++){
                 if(!visited[i][j]){
