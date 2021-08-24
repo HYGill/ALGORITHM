@@ -37,7 +37,8 @@ public class Q_단어변환_2021 {
         return answer;
     }
 
-    private static int recursion(ArrayList<String> wordList, String compareWord, String target, int answer){
+    // visited[] 넣기
+    private static int recursion(ArrayList<String> wordList, String compareWord, String target, int answer){ // void로 변경
         int cnt = 0;
         int resultCnt = 0;
         for(int i = 0; i < wordList.size(); i++){
@@ -50,7 +51,7 @@ public class Q_단어변환_2021 {
                 }
             }
             if(resultCnt == target.length() - 1) 
-                return answer;
+                return answer; // result 전역으로 선언하고 result = answer한 후 return 으로 변경
 
             if(cnt == wordList.get(i).length() - 1){
                 compareWord = wordList.get(i);
