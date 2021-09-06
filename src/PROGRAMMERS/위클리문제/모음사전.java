@@ -33,7 +33,9 @@ public class 모음사전 {
             }
             changeWord(nowWord, compareWord, cnt + 1);
         }else{
+            // 맨뒤가 U일 경우 nowWord 개별 단어 뒤부터 검색해서 U아닐숫자나올시에 그 자리에서 +1 한 글자로 변경 후 뒤에 U 모두 삭제 후 return
             
+            // 아니면 charList 맨뒷자리 다음꺼 넣기
         }
     }
 }
