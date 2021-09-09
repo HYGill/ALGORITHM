@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Collections;
 
 public class 직업군추천하기 {
     public static void main(String[] args) {
@@ -18,14 +19,14 @@ public class 직업군추천하기 {
     }
 
     public static String solution(String[] table, String[] languages, int[] preference) {
-        List<Integer> answer = new ArrayList<>();
+        List<Integer> result = new ArrayList<>();
 
         Map<String, List<String>> tableMap = new HashMap<>();
         for(int i = 0; i < table.length; i++){
             String[] tmp = table[i].split(" ");
 
             List<String> saveList = new ArrayList<>();
-            for(int j = 1; j < saveList.size(); j++){
+            for(int j = 1; j < tmp.size(); j++){
                 saveList.add(tmp[j]);
             }
             tableMap.put(tmp[0], saveList);
@@ -46,9 +47,14 @@ public class 직업군추천하기 {
                     score += scoreMap.get(newTable.get(i)) * (5-i);
                 }
             }
-            answer.add(score);
+            result.add(score);
         }
-
-        return null; // 언어 선호도 x 직업군 언어 점수의 총합이 가장 높은 직업군 return
+        
+        // result 중 가장 높은 점수 찾고
+        int resultMax = Collections.max(list);
+        int index = result.indexOf(resultMax);
+        
+        // 그것에 해당하는 tableMap key 값 return
+        return tableMap.get(index);
     }
 }
