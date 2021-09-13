@@ -20,7 +20,7 @@ public class 복서정렬하기 {
         List<Float> winRate = new ArrayList<>();
         
         // list에 담아야할 것(이긴횟수, 몸무게보다 큰 사람한테 이긴 횟수, 자신의 몸무게) => 2차원 배열, 이 정보로 arrays.sort하기
-        int[][] info = new int[weights.length][3];
+        int[][] info = new int[weights.length][4];
 
         // head2head String 자르고 승률계산
         for(int i = 0; i < weights.length; i++){
@@ -37,9 +37,10 @@ public class 복서정렬하기 {
                     }
             }
             percent = (float)cnt / (float)(head2head[i].length()-1);
-            info[i][0] = cnt;
-            info[i][1] = winHeavyCnt;
-            info[i][2] = weights[i];
+            info[i][0] = i;
+            info[i][1] = cnt;
+            info[i][2] = winHeavyCnt;
+            info[i][3] = weights[i];
             
             winRate.add(percent);
             winWeightCnt(i, winHeavyCnt);
@@ -50,7 +51,23 @@ public class 복서정렬하기 {
         // 몸무게 무거운 사람 이긴 count가 더 많은 것 판별
 
         // 그것도 같으면 몸무게 비교
+        Arrays.sort(info, new Comparator<int[]>() { 
+           @Override public int compare(int[] o1, int[] o2) { 
+               // 승률 비교
+               if(o1[1] != o2[1]) 
+                   return o2[1]-o1[1]; 
+               // 몸무게별 승 비교
+               if(o1[2] != o2[2]) 
+                   return o2[2]-o1[2]; 
+               // 몸무게 비교
+               return o1[3] - o2[3]; 
+           } 
+        });
 
+        for (int i = 0; i < info.length; i++) {
+            answer[i] = (int)info[i][0];
+        }
+        
         return answer;
     }
 }
