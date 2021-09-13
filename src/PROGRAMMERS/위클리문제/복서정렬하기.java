@@ -46,11 +46,6 @@ public class 복서정렬하기 {
             winWeightCnt(i, winHeavyCnt);
         }
 
-        // 승률이 같은게 있다
-
-        // 몸무게 무거운 사람 이긴 count가 더 많은 것 판별
-
-        // 그것도 같으면 몸무게 비교
         Arrays.sort(info, new Comparator<int[]>() { 
            @Override public int compare(int[] o1, int[] o2) { 
                // 승률 비교
