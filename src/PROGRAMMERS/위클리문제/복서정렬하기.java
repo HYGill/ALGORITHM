@@ -52,10 +52,10 @@ public class 복서정렬하기 {
                 if(o1[1] != o2[1]) 
                     return o2[1]-o1[1]; 
                 // 몸무게별 승 비교
-                if(o1[2] != o2[2]) 
+                else if(o1[2] != o2[2]) 
                    return o2[2]-o1[2]; 
                 // 몸무게 비교
-                if(o1[3] != o2[3]) 
+                else if(o1[3] != o2[3]) 
                     return o2[3] - o1[3];
 
                 return o1[0] - o2[0];
