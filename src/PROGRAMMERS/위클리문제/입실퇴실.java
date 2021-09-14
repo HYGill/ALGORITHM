@@ -13,7 +13,7 @@ public class 입실퇴실 {
         List<Integer> enterList = Arrays.asList(enter);
         List<Integer> leaveList = Arrays.asList(leave);
         List<Integer> room = new ArrayList<>();
-        
+        Map<Integer, Integer> meetCnt = new LinkedHashMap<>();
 
         while(enterList.size() > 0 && leaveList.size() > 0 && room.size() > 0){
             // enter가 room에 들어오고 enterList에서 제거
@@ -21,6 +21,11 @@ public class 입실퇴실 {
             enterList.remove(0);
             
             // 점수 계산
+            for(int i : room){
+                int tmp = meetCnt.get(i);
+                tmp++;
+                meetCnt.put(i, tmp);
+            }
             
             // leaveList.get(0) 과 같은지 비교
             // 같으면 room에서 빼고 leaveList에서도 빼기
@@ -30,6 +35,10 @@ public class 입실퇴실 {
             }
         }
 
+        int index = 0;
+        for(Integer key : map.keySet()) {
+            answer[index] = map.get(key);
+        }
         return answer;
     }
 }
