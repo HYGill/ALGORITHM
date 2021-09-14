@@ -9,6 +9,27 @@ public class 입실퇴실 {
 
     public static int[] solution(int[] enter, int[] leave) {
         int[] answer = {};
+        
+        List<Integer> enterList = Arrays.asList(enter);
+        List<Integer> leaveList = Arrays.asList(leave);
+        List<Integer> room = new ArrayList<>();
+        
+
+        while(enterList.size() > 0 && leaveList.size() > 0 && room.size() > 0){
+            // enter가 room에 들어오고 enterList에서 제거
+            room.add(enterList.get(0));
+            enterList.remove(0);
+            
+            // 점수 계산
+            
+            // leaveList.get(0) 과 같은지 비교
+            // 같으면 room에서 빼고 leaveList에서도 빼기
+            if(room.get(0) == leaveList.get(0)){
+                room.remove(0);
+                leaveList.remove(0);
+            }
+        }
+
         return answer;
     }
 }
