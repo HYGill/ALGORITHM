@@ -1,6 +1,7 @@
 package PROGRAMMERS.위클리문제;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +15,7 @@ public class 입실퇴실 {
     }
 
     public static int[] solution(int[] enter, int[] leave) {
-        int[] answer = {};
+        int[] answer = new int[enter.length];
         
         List<Integer> enterList = new ArrayList<Integer>();
         for(int i : enter) enterList.add(i);
@@ -23,8 +24,13 @@ public class 입실퇴실 {
         List<Integer> room = new ArrayList<>();
         Map<Integer, Integer> meetCnt = new LinkedHashMap<>();
 
-        while(enterList.size() > 0 && leaveList.size() > 0){
+        while(enterList.size() > 0 && leaveList.size() > 0 ){
             int nowEnter = enterList.get(0);
+
+            if(!meetCnt.containsKey(nowEnter)){
+                meetCnt.put(nowEnter, 0);
+            }
+
             // enter가 room에 들어오고 enterList에서 제거
             room.add(enterList.get(0));
             enterList.remove(0);
@@ -35,7 +41,7 @@ public class 입실퇴실 {
                     int tmp = meetCnt.get(key);
                     if(key == nowEnter){
                         tmp += room.size()-1;
-                    }else{
+                    }else if(room.contains(key)){
                         tmp++;
                     }
                     meetCnt.put(key, tmp);
@@ -46,9 +52,13 @@ public class 입실퇴실 {
             removeRecursion(room, leaveList.get(0));
         }
 
+        Object[] mapkey = meetCnt.keySet().toArray();
+		Arrays.sort(mapkey);
+
         int index = 0;
-        for(Integer key : meetCnt.keySet()) {
-            answer[index] = meetCnt.get(key);
+        for(Object i : mapkey) {
+            answer[index] = meetCnt.get(i);
+            index++;
         }
         return answer;
     }
@@ -63,8 +73,10 @@ public class 입실퇴실 {
         }
         
         // 방을 떠날 수 있는 사람이 뒤에 있는지 확인
-        if(room.contains(leaveList.get(0))){
-           removeRecursion(room, leaveList.get(0));
+        if(leaveList.size() > 1){
+            if(room.contains(leaveList.get(0))){
+            removeRecursion(room, leaveList.get(0));
+            }
         }
     }
 }
