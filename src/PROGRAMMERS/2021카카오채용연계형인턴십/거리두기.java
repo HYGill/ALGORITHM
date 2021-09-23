@@ -35,7 +35,7 @@ class Solution {
   public static int calcul(List<Integer[]> people, String[] place){
     for(int i = 0; i < people.size() - 1 ; i++){
       Integer[] nowSpot = people.get(i);
-      Integer[] spot2 = people.get(i+1); 
+      // Integer[] spot2 = people.get(i+1); 
       
       // i+1 부터 모두 검사. distance와 대각선, 파티션 유무
       for(Integer[] compareSpot : people){
