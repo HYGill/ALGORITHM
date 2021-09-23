@@ -48,18 +48,28 @@ class Solution {
             for(int j = nowSpot[1]; j < compareSpot[1]; j++){
               if(place[nowSpot[0]].charAt(j) == 'X'){
                 flag = true;
-                break;
               }
             }
           }
           // if(사람이 대각선에 위치하면)
           else if((nowSpot[0] + 1 == compareSpot[0]) && (nowSpot[1] == compareSpot[1] + 1)){
-            
+            if(place[nowSpot[0]].charAt(nowSpot[1]+1) == 'X' && place[compareSpot[0]].charAt(compareSpot[1]-1) == 'X'){
+              flag = true;
+            }
+          }else if((nowSpot[0] + 1 == compareSpot[0]) && (nowSpot[1] + 1 == compareSpot[1]){
+            if(place[nowSpot[0]].charAt(nowSpot[1]-1) == 'X' && place[compareSpot[0]].charAt(compareSpot[1]+1) == 'X'){
+              flag = true;
+            }
           }
+        }else{
+          // 거리가 2가 넘는 것이 있다면 인접한거 다 검사한거여서 다음으로 넘어감
+          break;
         }
-        
+                   
+        if(!flag)
+          return 0;
       }
-
+/*
       int distance = Math.abs(spot1[0] - spot2[0]) + Math.abs(spot1[1] - spot2[1]);
 
       if(distance <= 2) {
@@ -83,7 +93,7 @@ class Solution {
           return 0;
       }
     }
-
+*/
     return 1;
   }
 }
