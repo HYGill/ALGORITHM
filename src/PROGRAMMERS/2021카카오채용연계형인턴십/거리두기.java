@@ -34,8 +34,31 @@ class Solution {
   // 두 테이블 T1, T2가 행렬 (r1, c1), (r2, c2)에 각각 위치하고 있다면, T1, T2 사이의 맨해튼 거리는 |r1 - r2| + |c1 - c2|
   public static int calcul(List<Integer[]> people, String[] place){
     for(int i = 0; i < people.size() - 1 ; i++){
-      Integer[] spot1 = people.get(i);
-      Integer[] spot2 = people.get(i+1); // i+1 부터 모두 검사. distance와 대각선, 파티션 유무
+      Integer[] nowSpot = people.get(i);
+      Integer[] spot2 = people.get(i+1); 
+      
+      // i+1 부터 모두 검사. distance와 대각선, 파티션 유무
+      for(Integer[] compareSpot : people){
+        int distance = Math.abs(nowSpot[0] - compareSpot[0]) + Math.abs(nowSpot[1] - compareSpot[1]);
+        
+        if(distance <= 2) {
+          boolean flag = false;
+
+          if(nowSpot[0] == compareSpot[0]){
+            for(int j = nowSpot[1]; j < compareSpot[1]; j++){
+              if(place[nowSpot[0]].charAt(j) == 'X'){
+                flag = true;
+                break;
+              }
+            }
+          }
+          // if(사람이 대각선에 위치하면)
+          else if((nowSpot[0] + 1 == compareSpot[0]) && (nowSpot[1] == compareSpot[1] + 1)){
+            
+          }
+        }
+        
+      }
 
       int distance = Math.abs(spot1[0] - spot2[0]) + Math.abs(spot1[1] - spot2[1]);
 
