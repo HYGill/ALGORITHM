@@ -22,6 +22,10 @@ class Solution {
             people.add(tmp);
           }
         }
+        if(people.isEmpty()){
+          answer[i] = 1;
+          break;
+        }
       }
       // people에 저장한 거리 기준으로 지키면 1, 안지키면 0
       answer[i] = calcul(people, places[i]);
@@ -44,11 +48,10 @@ class Solution {
         if(distance <= 2) {
           boolean flag = false;
 
+          // if(가로위치)
           if(nowSpot[0] == compareSpot[0]){
-            for(int j = nowSpot[1]; j < compareSpot[1]; j++){
-              if(place[nowSpot[0]].charAt(j) == 'X'){
-                flag = true;
-              }
+            if(place[nowSpot[0]].charAt(nowSpot[1]+1) == 'X'){
+              flag = true;
             }
           }
           // if(세로위치)
