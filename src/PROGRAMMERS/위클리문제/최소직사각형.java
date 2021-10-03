@@ -7,25 +7,24 @@ public class 최소직사각형 {
         System.out.println(solution(sizes));
     }
 
-    static public int solution(int[][] sizes) {
-        answer = sizes[0][0] + sizes[0][1];
-        
-        return answer;
-    }
+    public static int solution(int[][] sizes) {
+        int answer = 0;
 
-    static int answer = 0;
-    static public void recursion(int[][] sizes, int x, int y){
+        int originBig = (size[0][0] >= sizes[0][1]) ? sizes[0][0] : sizes[0][1];
+        int originSmall = (size[0][0] <= sizes[0][1]) ? sizes[0][0] : sizes[0][1];
         for(int i = 1; i < sizes.length; i++){
-            int compareX = 0;
-            int compareY = 0;
-            if(sizes[i][0] > sizes[i-1][0]){
-                compareX = sizes[i][0];
-            }
-            if(sizes[i][1] > sizes[i-1][1]){
-                compareY = sizes[i][1];
+            int bigSize = (size[i][0] >= sizes[i][1]) ? sizes[i][0] : sizes[i][1];
+            int smallSize = (size[i][0] <= sizes[i][1]) ? sizes[i][0] : sizes[i][1];
+ 
+            if(bigSize > originBig){
+                originBig = bigSize;
             }
 
-            
+            if(smallSize > originSmall){
+                originSmall = smallSize;
+            }
         }
+        
+        return originBig * originSmall;
     }
 }
