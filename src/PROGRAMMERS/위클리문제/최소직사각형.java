@@ -10,11 +10,11 @@ public class 최소직사각형 {
     public static int solution(int[][] sizes) {
         int answer = 0;
 
-        int originBig = (size[0][0] >= sizes[0][1]) ? sizes[0][0] : sizes[0][1];
-        int originSmall = (size[0][0] <= sizes[0][1]) ? sizes[0][0] : sizes[0][1];
+        int originBig = (sizes[0][0] >= sizes[0][1]) ? sizes[0][0] : sizes[0][1];
+        int originSmall = (sizes[0][0] <= sizes[0][1]) ? sizes[0][0] : sizes[0][1];
         for(int i = 1; i < sizes.length; i++){
-            int bigSize = (size[i][0] >= sizes[i][1]) ? sizes[i][0] : sizes[i][1];
-            int smallSize = (size[i][0] <= sizes[i][1]) ? sizes[i][0] : sizes[i][1];
+            int bigSize = (sizes[i][0] >= sizes[i][1]) ? sizes[i][0] : sizes[i][1];
+            int smallSize = (sizes[i][0] <= sizes[i][1]) ? sizes[i][0] : sizes[i][1];
  
             if(bigSize > originBig){
                 originBig = bigSize;
