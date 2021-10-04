@@ -10,6 +10,9 @@ public class Q_조이스틱 {
 
         // AAAAAA(글자 수 만큼으로 시작)
         // ABCDEFGHIJKLMNOPQRSTUVWXYZ
+        // "BBAABAAAA" -> 7
+        // "BBAABBB" ->10
+        
 
         return answer;
     }
