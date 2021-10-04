@@ -1,5 +1,3 @@
-package PROGRAMMERS.위클리문제;
-
 /*
 * DFS : Stack, Recursion
 * BFS : Queue
