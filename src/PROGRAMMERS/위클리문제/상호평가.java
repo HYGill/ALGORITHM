@@ -1,5 +1,3 @@
-package PROGRAMMERS.위클리문제;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
