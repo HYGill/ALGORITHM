@@ -1,9 +1,5 @@
-package PROGRAMMERS.위클리문제;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.List;
 
 public class 복서정렬하기 {
     public static void main(String[] args) {
