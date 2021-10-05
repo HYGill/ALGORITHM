@@ -1,4 +1,3 @@
-package PROGRAMMERS.greedy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
