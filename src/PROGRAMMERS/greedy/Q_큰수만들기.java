@@ -1,4 +1,3 @@
-package PROGRAMMERS.greedy;
 
 public class Q_큰수만들기 {
     static String answer = null;
