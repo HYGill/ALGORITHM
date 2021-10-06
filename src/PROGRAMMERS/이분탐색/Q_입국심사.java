@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Q_입국심사 {
     public static void main(String[] args) {
         int n = 6; // 사람 수
