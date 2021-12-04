@@ -1,4 +1,3 @@
-
 public class 행렬테두리회전하기 {
     static int answer = 0;
     static int startCnt = 0;
