@@ -14,7 +14,7 @@ public class 행렬테두리회전하기 {
         // (y1 - 1) * rows + x1 ~ (y2 - 1) * rows + x2
         // int width = (max % rows) + 1
         // int height = (min % rows)
-        return answer;
+        return answer; 
     }
 
 }
