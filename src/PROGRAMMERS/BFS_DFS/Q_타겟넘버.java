@@ -1,4 +1,3 @@
-package PROGRAMMERS.BFS_DFS;
 
 public class Q_타겟넘버 {
    private static int answer = 0;
@@ -9,27 +8,19 @@ public class Q_타겟넘버 {
    }
 
    public static int solution(int[] numbers, int target) {
-      recursion(numbers, target, 0);
+      recursion(numbers, target, 0, 0);
 
       return answer;
    }
 
-   public static void recursion(int[] numbers, int target, int cnt){
-      if(cnt == numbers.length){
-         int sum = 0;
-         for(int i : numbers){
-            sum += i;
-         }
-         if(sum == target) {
+   public static void recursion(int[] numbers, int target, int depth, int nowSum){
+      if(depth == numbers.length){
+         if(nowSum == target){
             answer++;
          }
-         return;
-      }else {
-         numbers[cnt] = numbers[cnt] * 1;
-         recursion(numbers, target, cnt + 1);
-
-         numbers[cnt] = numbers[cnt] * -1;
-         recursion(numbers, target, cnt + 1);
+      }else{
+         recursion(numbers, target, depth+1, nowSum+numbers[depth]);
+         recursion(numbers, target, depth+1, nowSum-numbers[depth]);
       }
    }
 }
