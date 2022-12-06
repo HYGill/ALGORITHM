@@ -9,14 +9,14 @@ public class Q_16236_아기상어_BFS {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int n = input.nextInt();
-
         int[][] cage = new int[n][n];
 
         int startX = 0;
         int startY = 0;
         for (int i = 0; i < n; i++){
             for (int j = 0; j < n; j++) {
-                cage[i][j] = input.nextInt();
+                String inputString = input.next();
+                cage[i][j] = Integer.parseInt(inputString);
                 int tmp = cage[i][j];
                 if(tmp == 9) {
                     startX = i;
